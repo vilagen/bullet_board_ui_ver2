@@ -1,4 +1,4 @@
 // just to get started
-export const getStarted = () => {
+export const apiCalls = () => {
   return ""
 }

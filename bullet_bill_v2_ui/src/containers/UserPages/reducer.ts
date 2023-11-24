@@ -1,21 +1,41 @@
 const { fromJS } = require('immutable');
 
-interface Action {
+interface UserInfo {
+  userName: string,
+  emailAddress: string
+}
+
+interface UserInfo {
+  userName: string,
+  emailAddress: string
+}
+
+interface UserPagesAttributes {
+  userInfo: UserInfo
+}
+
+interface UserPagesReducer {
+  data: UserPagesAttributes
+}
+
+interface UserPagesAction {
   type:String,
-  data: any
+  data: UserPagesReducer
 }
 
 
-const initialState = fromJS({
+const userPageInitState:UserPagesReducer = {
   data: {
     userInfo : {
       userName: "",
       emailAddress: ""
     }
   } 
-});
+}
 
-export default function appReducer(state = initialState, action:any) {
+const initialState = fromJS(userPageInitState);
+
+export default function appReducer(state = initialState, action:UserPagesAction) {
   switch(action.type) {
     case 'createUser': 
       /*
