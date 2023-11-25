@@ -1,18 +1,35 @@
 import React, {useState} from 'react';
+import { AppDispatch, RootState } from '../../redux_store/store';
 import { connect } from 'react-redux'
 import styles from './mainHeaderStyles.module.css';
-import { AppDispatch, RootState } from '../../redux_store/store';
+import DropDown from '../../common/components/Dropdown/Dropdown';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
 
 export const MainHeader = () => {
 
-  const pageOptions:Array<string> = ["Home", "Create Account"];
+  const pageOptions:Array<any> = [
+    {
+      value : "Home",
+      id : "HOME",
+      onColumnClick : null
+    },
+    {
+      value : "Create Account",
+      id : "CREATE_ACCOUNT",
+      onColumnClick : null
+    },
+  ];
 
   return (
-    <div className={styles.mainBgColor}>
-      <p>Testing</p>
-    </div>
+    <Grid container className={styles.mainBgColor}>
+      <Grid className={styles.dropDownMenu} md={1}>
+        <DropDown columnNames={pageOptions} />
+      </Grid>
+      <Grid md={11}>
+        <p>Testing</p>
+      </Grid>
+    </Grid>
   )
-
 }
 
 

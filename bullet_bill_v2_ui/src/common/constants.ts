@@ -1,0 +1,1 @@
+export const BULLET_BOARD = "BULLET BOARD";

@@ -1,0 +1,31 @@
+.dropDownRow {
+  height: 30px;
+  width: 10vw;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #a1a4aa;
+  margin: 0px
+}
+
+.dropDownBox:hover {
+  font-weight: bold;
+}
+
+.darkDropDownRow {
+  height: 30px;
+  width: 2vw;
+  padding: 3px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+}
+
+.dropDownBox {
+  padding: 3px;
+  margin: 0px;
+}
+
+.menuIcon {
+  width: 35px;
+  width: 35px;
+}

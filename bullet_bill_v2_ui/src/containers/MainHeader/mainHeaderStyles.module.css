@@ -2,3 +2,9 @@
   height: 50px;
   background-color: rgb(156, 229, 255);
 }
+
+.dropDownMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
