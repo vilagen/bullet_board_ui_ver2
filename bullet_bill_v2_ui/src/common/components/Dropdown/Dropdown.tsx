@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import styles from "./dropdown.module.css";
 import hamburgerMenu from "../../images/hamburgerMenu.png";
 
+/* Need to change this into an accordion. This isn't a dropdown. Wrong name. */
+// import Accordion from '@mui/material/Accordion';
+// import AccordionSummary from '@mui/material/AccordionSummary';
+// import AccordionDetails from '@mui/material/AccordionDetails';
+// import Typography from '@mui/material/Typography';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 interface columnProps {
   value : string,
   id : string,
