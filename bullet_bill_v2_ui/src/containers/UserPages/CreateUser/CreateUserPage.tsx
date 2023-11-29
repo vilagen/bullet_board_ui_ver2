@@ -19,8 +19,8 @@ export const CreateUserPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordCheck, setShowPasswordCheck] = useState(false);
+  const [hidePassword, setHidePassword] = useState(true);
+  const [hidePasswordCheck, setHidePasswordCheck] = useState(true);
 
   const inputRowsList:Array<RowsList> = [
     {
@@ -46,8 +46,8 @@ export const CreateUserPage = () => {
       value: password,
       required: true,
       setStateValue: setPassword,
-      hideText : showPassword,
-      setHideText: setShowPassword
+      hideText : hidePassword,
+      setHideText: setHidePassword
     },
     {
       id: "passwordCheckInput",
@@ -56,8 +56,8 @@ export const CreateUserPage = () => {
       value: passwordCheck,
       required: true,
       setStateValue: setPasswordCheck,
-      hideText: showPasswordCheck,
-      setHideText: setShowPasswordCheck
+      hideText: hidePasswordCheck,
+      setHideText: setHidePasswordCheck
     },
   ]
 
