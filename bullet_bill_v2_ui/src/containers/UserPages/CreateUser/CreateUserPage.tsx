@@ -5,6 +5,7 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { Box, Button, Container } from '@mui/material';
 import BBInputLables from '../../../common/components/InputLabels/InputLabels';
 import { RowsList } from '../../../common/components/InputLabels/InputLabelsInterfaces';
+import { createBBUser } from '../../../api/apiIndex';
 
 interface formInputs {
   "Username" : string,
@@ -70,7 +71,7 @@ export const CreateUserPage = () => {
     })
   }
 
-  const signUp = (inputInfo:formInputs) => {
+  const signUp = async (inputInfo:formInputs) => {
 
     const checkForEmptyValue = []
 
@@ -89,7 +90,14 @@ export const CreateUserPage = () => {
       return alert("Passwords do not match. Please check password entries.")
     }
 
-    return ""
+    const createUserBody = {
+      user_name: inputInfo.Username,
+      primary_email : inputInfo["Email Address"],
+      password: inputInfo.Password
+    }
+
+    await createBBUser(createUserBody);
+    return;
   }
 
   return (
