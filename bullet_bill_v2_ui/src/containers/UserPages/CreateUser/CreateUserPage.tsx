@@ -6,6 +6,7 @@ import { Box, Button, Container } from '@mui/material';
 import BBInputLables from '../../../common/components/InputLabels/InputLabels';
 import { RowsList } from '../../../common/components/InputLabels/InputLabelsInterfaces';
 import { createBBUser } from '../../../api/apiIndex';
+import { hashValue } from '../../../common/utils';
 
 interface formInputs {
   "Username" : string,
@@ -90,10 +91,16 @@ export const CreateUserPage = () => {
       return alert("Passwords do not match. Please check password entries.")
     }
 
+    const encryptedPassword = hashValue(inputInfo["Password"])
+
+    if(!encryptedPassword) {
+      return alert("Problem encrypting password!");
+    }
+
     const createUserBody = {
       user_name: inputInfo.Username,
       primary_email : inputInfo["Email Address"],
-      password: inputInfo.Password
+      password: encryptedPassword
     }
 
     await createBBUser(createUserBody);
