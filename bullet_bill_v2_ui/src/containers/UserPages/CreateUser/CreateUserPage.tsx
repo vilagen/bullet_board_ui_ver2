@@ -6,7 +6,8 @@ import { Box, Button, Container } from '@mui/material';
 import BBInputLables from '../../../common/components/InputLabels/InputLabels';
 import { RowsList } from '../../../common/components/InputLabels/InputLabelsInterfaces';
 import { createBBUser } from '../../../api/apiIndex';
-import { hashValue } from '../../../common/utils';
+import { hashValue, checkPassword } from '../../../common/utils';
+import { VALID } from '../../../common/constants';
 
 interface formInputs {
   "Username" : string,
@@ -74,24 +75,30 @@ export const CreateUserPage = () => {
 
   const signUp = async (inputInfo:formInputs) => {
 
-    const checkForEmptyValue = []
+    const checkForEmptyValue = [];
 
     for( let [key, value] of Object.entries(inputInfo)) {
       if(!value) {
-        checkForEmptyValue.push(key)
+        checkForEmptyValue.push(key);
         continue;
       }
     }
 
     if(!inputInfo || checkForEmptyValue.length > 0) {
-      return alert(`Please fill out missing entries: ${checkForEmptyValue.join(", ")}`)
+      return alert(`Please fill out missing entries: ${checkForEmptyValue.join(", ")}`);
     }
 
     if(inputInfo["Password"] !== inputInfo["Re-Enter Password"]) {
-      return alert("Passwords do not match. Please check password entries.")
+      return alert("Passwords do not match. Please check password entries.");
     }
 
-    const encryptedPassword = hashValue(inputInfo["Password"])
+    const checkIfValidPassword = checkPassword(inputInfo.Password);
+
+    if(checkIfValidPassword !== VALID) {
+      return alert(checkIfValidPassword);
+    }
+
+    const encryptedPassword = hashValue(inputInfo["Password"]);
 
     if(!encryptedPassword) {
       return alert("Problem encrypting password!");
@@ -104,7 +111,7 @@ export const CreateUserPage = () => {
     }
 
     await createBBUser(createUserBody);
-    return;
+    return alert("Password saved successfully");
   }
 
   return (
